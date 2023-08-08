@@ -7,7 +7,7 @@ const cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var wordsRouter = require("./routes/words");
-var signleWordRouter = require("./routes/single_word");
+// var signleWordRouter = require("./routes/single_word");
 
 var app = express();
 
@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/words", wordsRouter);
-app.use("/:word", signleWordRouter);
+// app.use("/:word", signleWordRouter);
 app.use(cors());
 
 module.exports = app;
