@@ -21,14 +21,14 @@ router.get("/:word", function (req, res, next) {
     .catch((err) => res.status(500).send(err));
 });
 
-router.get("/words/query/:query", function (req, res, next) {
-  const { query } = req.params;
+// router.get("/words/query/:query", function (req, res, next) {
+//   const { query } = req.params;
 
-  db(`SELECT * FROM words WHERE word LIKE '%${query}%';`)
-    .then((results) => {
-      res.send(results.data[0]);
-    })
-    .catch((err) => res.status(500).send(err));
-});
+//   db(`SELECT * FROM words WHERE word LIKE '%${query}%';`)
+//     .then((results) => {
+//       res.send(results.data[0]);
+//     })
+//     .catch((err) => res.status(500).send(err));
+// });
 
 module.exports = router;

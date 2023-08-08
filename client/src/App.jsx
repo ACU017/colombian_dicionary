@@ -3,13 +3,27 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [searchInput, SetsearchInput] = useState("");
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    SetsearchInput(e.target.value);
+  };
   return (
     <>
       <div>
         <h1>Colombian Dictionary</h1>
-        <div></div>
+        <div>
+          <form>
+            <input
+              type="text"
+              placeholder="Busque aquí "
+              onChange={handleChange}
+              value={searchInput}
+            />
+            <button>Dele</button>
+          </form>
+        </div>
       </div>
     </>
   );
