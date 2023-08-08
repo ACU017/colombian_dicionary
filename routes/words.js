@@ -16,7 +16,7 @@ router.get("/:word", function (req, res, next) {
 
   db(`SELECT * FROM words WHERE word = "${word}" ;`)
     .then((results) => {
-      res.send(results.data[0]);
+      res.send(results.data);
     })
     .catch((err) => res.status(500).send(err));
 });
