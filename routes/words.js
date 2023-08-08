@@ -21,4 +21,13 @@ router.get("/:word", function (req, res, next) {
     .catch((err) => res.status(500).send(err));
 });
 
+router.get("/:word", function (req, res, next) {
+  const { word } = req.params;
+
+  db(`SELECT * FROM words WHERE word LIKE '%${word}%';`)
+    .then((results) => {
+      res.send(results.data[0]);
+    })
+    .catch((err) => res.status(500).send(err));
+});
 module.exports = router;
