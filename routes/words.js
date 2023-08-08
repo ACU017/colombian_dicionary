@@ -14,20 +14,21 @@ router.get("/", function (req, res, next) {
 router.get("/:word", function (req, res, next) {
   const { word } = req.params;
 
-  db(`SELECT * FROM words WHERE word = "${word}" ;`)
+  db(`SELECT * FROM words WHERE word LIKE '%${word}%';`)
     .then((results) => {
       res.send(results.data);
     })
     .catch((err) => res.status(500).send(err));
 });
 
-router.get("/:word", function (req, res, next) {
-  const { word } = req.params;
+router.get("/words/query/:query", function (req, res, next) {
+  const { query } = req.params;
 
-  db(`SELECT * FROM words WHERE word LIKE '%${word}%';`)
+  db(`SELECT * FROM words WHERE word LIKE '%${query}%';`)
     .then((results) => {
       res.send(results.data[0]);
     })
     .catch((err) => res.status(500).send(err));
 });
+
 module.exports = router;
