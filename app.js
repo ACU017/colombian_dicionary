@@ -5,7 +5,7 @@ var logger = require("morgan");
 const cors = require("cors");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+// var usersRouter = require("./routes/users");
 var wordsRouter = require("./routes/words");
 // var signleWordRouter = require("./routes/single_word");
 
@@ -18,9 +18,8 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/words", wordsRouter);
-// app.use("/:word", signleWordRouter);
+app.use("/api/words", wordsRouter);
+// app.use("/:word", usersRouter);// after a : is a varible aka anything
 app.use(cors());
 
 module.exports = app;

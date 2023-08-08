@@ -3,26 +3,53 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [searchInput, SetsearchInput] = useState("");
+  const [searchInput, SetSearchInput] = useState("");
+  const [searchResult, SetSearchResult] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
-    SetsearchInput(e.target.value);
+    SetSearchInput(e.target.value);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    searchWord(searchInput);
+  };
+
+  const searchWord = async () => {
+    try {
+      const response = await fetch(`/api/words/${searchInput}`, {
+        method: "GET",
+      });
+
+      const json = await response.json(); // should I transform everything into a small caps ?
+      console.log(json);
+      SetSearchResult(json);
+    } catch (error) {
+      console.log("errorz");
+    }
+  };
+
   return (
     <>
       <div>
         <h1>Colombian Dictionary</h1>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Busque aquí "
               onChange={handleChange}
               value={searchInput}
             />
-            <button>Dele</button>
+            <button type="submit">Dele</button>
           </form>
+        </div>
+        <div className="container">
+          <p>Word: {searchResult[0].word}</p>
+          <p>function: {searchResult[0].function} </p>
+          <p>Definition : {searchResult[0].definition_es}</p>
+          <p>Examples : {searchResult[0].example_1}</p>
         </div>
       </div>
     </>
