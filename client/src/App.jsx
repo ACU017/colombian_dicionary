@@ -10,8 +10,15 @@ function App() {
     <>
       <div>
         <nav className="navbar">
-          <p>Home</p>
-          <p>Dictionary</p> <p>Glossary</p>
+          <p>
+            <Link to="">Home</Link>
+          </p>
+          <p>
+            <Link to="Dictionary">Dictionary</Link>
+          </p>{" "}
+          <p>
+            <Link to="Allwords">Glossary</Link>
+          </p>
         </nav>
         <h1>Colombian Dictionary</h1>
         <div></div>
