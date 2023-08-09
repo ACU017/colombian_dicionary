@@ -44,14 +44,18 @@ router.post("/post_word", async function (req, res, next) {
   }
 });
 
-// router.get("/words/query/:query", function (req, res, next) {
-//   const { query } = req.params;
-
-//   db(`SELECT * FROM words WHERE word LIKE '%${query}%';`)
-//     .then((results) => {
-//       res.send(results.data[0]);
-//     })
-//     .catch((err) => res.status(500).send(err));
-// });
+// ADMIN RIGHTS
+/*
+router.put("/todos/:todo_id", async (req, res) => {
+  // URL params are available in req.params
+  const id = +req.params.todo_id;
+  try {
+    await db(`UPDATE items SET complete = !complete WHERE id =${id};`);
+    getAllItems(req, res);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+*/
 
 module.exports = router;
