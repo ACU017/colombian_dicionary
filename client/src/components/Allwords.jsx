@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Allwords() {
   const [searchResult, SetSearchResult] = useState([]);
@@ -22,19 +22,19 @@ export default function Allwords() {
     getAllwords();
   }, []);
 
+  const sortedWords = searchResult
+    .slice()
+    .sort((a, b) => a.searchResult.localeCompare(b.searchResult));
+
   return (
     <div>
       <h3>Diccionario Colombiano</h3>
       {searchResult.map((result) => {
         return (
           <div key={result.id}>
-            <h5> Palabra : {result.word}</h5>
-            <p>
-              Categoría: <i>{result.category}</i>
-            </p>
-            <p> Definición : {result.definition_es}</p>
-            <p> Ejemplos : {result.example_1}</p>
-            <p>{result.example_2}</p>
+            <h5>
+              <Link to={`Dictionary/${result.word}`}>{result.word}</Link>
+            </h5>
           </div>
         );
       })}
