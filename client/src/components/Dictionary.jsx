@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 function Dictionary({ searchResult }) {
   const [word, setWord] = useState("");
-
   const [category, setCategory] = useState("");
   const [definitionEs, setDefinitionEs] = useState("");
   const [definitionEn, setDefinitionEn] = useState("");
@@ -19,7 +18,8 @@ function Dictionary({ searchResult }) {
           </p>
           <p>Definition: {searchResult[0].definition_es}</p>
           <p>
-            Examples: {searchResult[0].example_1} {searchResult[0].example_2}
+            Examples:<p>{searchResult[0].example_1}</p>
+            <p>{searchResult[0].example_2}</p>
           </p>
         </div>
       )}
