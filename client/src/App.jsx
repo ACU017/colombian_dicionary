@@ -5,7 +5,7 @@ import Dictionary from "./components/Dictionary";
 
 function App() {
   const [searchInput, SetSearchInput] = useState("");
-  const [searchResult, SetSearchResult] = useState("");
+  const [searchResult, SetSearchResult] = useState([]);
 
   const handleChange = (e) => {
     e.preventDefault();
