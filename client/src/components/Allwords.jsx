@@ -32,7 +32,7 @@ export default function Allwords() {
           return (
             <div key={result.id}>
               <h5>
-                <Link to={`Dictionary/${result.word}`}>{result.word}</Link>
+                <Link to={`/api/words/${result.word}`}>{result.word}</Link>
               </h5>
             </div>
           );
