@@ -1,11 +1,13 @@
-// import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 
 function Dictionary({ searchResult }) {
-  //   if (!Array.isArray(searchResult)) {
-  //     console.log(searchResult);
-  //     return <p>Nada parce.</p>;
-  //   }
+  const [word, setWord] = useState("");
+
+  const [category, setCategory] = useState("");
+  const [definitionEs, setDefinitionEs] = useState("");
+  const [definitionEn, setDefinitionEn] = useState("");
+  const [example1, setExample1] = useState("");
+  const [example2, setExample2] = useState("");
 
   return (
     <div>
@@ -13,7 +15,7 @@ function Dictionary({ searchResult }) {
         <div>
           <h5>Word : {searchResult[0].word} </h5>
           <p>
-            Function: <i>{searchResult[0].function}</i>
+            Function: <i>{searchResult[0].category}</i>
           </p>
           <p>Definition: {searchResult[0].definition_es}</p>
           <p>
