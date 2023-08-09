@@ -1,38 +1,10 @@
 import { useState } from "react";
-
+import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Dictionary from "./components/Dictionary";
 import Wordform from "./components/Wordform";
 
 function App() {
-  const [searchInput, SetSearchInput] = useState("");
-  const [searchResult, SetSearchResult] = useState([]);
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    SetSearchInput(e.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    searchWord(searchInput);
-  };
-
-  const searchWord = async () => {
-    try {
-      const response = await fetch(`/api/words/${searchInput}`, {
-        method: "GET",
-      });
-
-      const json = await response.json(); // should I transform everything into a small caps ?
-      console.log(typeof json);
-      console.log(json[0].word);
-      SetSearchResult(json);
-    } catch (error) {
-      console.log("errorz");
-    }
-  };
-
   return (
     <>
       <div>
@@ -40,23 +12,13 @@ function App() {
           <p>Dictionary</p> <p>Glossary</p>
         </nav>
         <h1>Colombian Dictionary</h1>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Busque aquí "
-              onChange={handleChange}
-              value={searchInput}
-            />
-            <button type="submit">Dele</button>
-          </form>
-        </div>
-        <div className="container" name="dictionary">
-          {console.log(searchResult)}
-          <Dictionary searchResult={searchResult} />
-          <Wordform />
-        </div>
+        <div></div>
+        <div className="container" name="dictionary"></div>
       </div>
+      <Routes>
+        <Route path="/Dictionary" element={<Dictionary />} />
+        <Route path="/Wordform" element={<Wordform />} />
+      </Routes>
     </>
   );
 }

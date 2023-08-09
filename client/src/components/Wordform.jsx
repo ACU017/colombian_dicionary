@@ -25,15 +25,31 @@ export default function Wordform() {
           onChange={(e) => setWord(e.target.value)}
         />
         <label>Que categoria es ? </label> {/* dropdown menu*/}
-        <input />
+        <input
+          type="text"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
         <label>Porfavor define la palabra : </label>
-        <textarea></textarea>
+        <textarea
+          value={definitionEs}
+          onChange={(e) => setDefinitionEs(e.target.value)}
+        ></textarea>
         <label>Ahora en inglés : </label>
-        <textarea></textarea>
+        <textarea
+          value={definitionEn}
+          onChange={(e) => setDefinitionEn(e.target.value)}
+        ></textarea>
         <label>Aquí va un ejemplo : </label>
-        <textarea></textarea>
+        <textarea
+          value={example1}
+          onChange={(e) => setExample1(e.target.value)}
+        ></textarea>
         <label>Y si quiere otro sumercé : </label>
-        <textarea></textarea>
+        <textarea
+          value={example2}
+          onChange={(e) => setExample2(e.target.value)}
+        ></textarea>
         <button>Hagale!</button>
       </form>
     </div>

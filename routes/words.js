@@ -30,7 +30,7 @@ router.get("/:word", function (req, res, next) {
     .catch((err) => res.status(500).send(err));
 });
 
-router.post("/post_word", async function (req, res, next) {
+router.post("/", async function (req, res, next) {
   const { word, category, definition_es, definition_en, example_1, example_2 } =
     req.body;
 
