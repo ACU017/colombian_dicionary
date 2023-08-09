@@ -3,12 +3,14 @@ import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Dictionary from "./components/Dictionary";
 import Wordform from "./components/Wordform";
+import Allwords from "./components/Allwords";
 
 function App() {
   return (
     <>
       <div>
         <nav className="navbar">
+          <p>Home</p>
           <p>Dictionary</p> <p>Glossary</p>
         </nav>
         <h1>Colombian Dictionary</h1>
@@ -18,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/Dictionary" element={<Dictionary />} />
         <Route path="/Wordform" element={<Wordform />} />
+        <Route path="/Allwords" element={<Allwords />} />
       </Routes>
     </>
   );
