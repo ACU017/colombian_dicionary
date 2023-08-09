@@ -22,22 +22,21 @@ export default function Allwords() {
     getAllwords();
   }, []);
 
-  const sortedWords = searchResult
-    .slice()
-    .sort((a, b) => a.searchResult.localeCompare(b.searchResult));
-
   return (
     <div>
       <h3>Diccionario Colombiano</h3>
-      {searchResult.map((result) => {
-        return (
-          <div key={result.id}>
-            <h5>
-              <Link to={`Dictionary/${result.word}`}>{result.word}</Link>
-            </h5>
-          </div>
-        );
-      })}
+      {searchResult
+        .slice()
+        .sort((a, b) => a.word.localeCompare(b.word))
+        .map((result) => {
+          return (
+            <div key={result.id}>
+              <h5>
+                <Link to={`Dictionary/${result.word}`}>{result.word}</Link>
+              </h5>
+            </div>
+          );
+        })}
     </div>
   );
 }
