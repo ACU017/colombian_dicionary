@@ -36,33 +36,20 @@ function Dictionary() {
         />
         <button type="submit">Dele</button>
       </form>
-      {
-        searchResult.length &&
-          searchResult.map((result) => {
-            return (
-              <div key={result.id}>
-                <h5> Palabra : {result.word}</h5>
-                <p>
-                  Categoría: <i>{result.category}</i>
-                </p>
-                <p> Definición : {result.definition_es}</p>
-                <p> Ejemplos : {result.example_1}</p>
-                <p>{result.example_2}</p>
-              </div>
-            );
-          })
-        // <div>
-        //   <h5>Word : {searchResult[0].word} </h5>
-        //   <p>
-        //     Function: <i>{searchResult[0].category}</i>
-        //   </p>
-        //   <p>Definition: {searchResult[0].definition_es}</p>
-        //   <p>
-        //     Examples:<p>{searchResult[0].example_1}</p>
-        //     <p>{searchResult[0].example_2}</p>
-        //   </p>
-        // </div>
-      }
+      {searchResult.length &&
+        searchResult.map((result) => {
+          return (
+            <div key={result.id}>
+              <h5> Palabra : {result.word}</h5>
+              <p>
+                Categoría: <i>{result.category}</i>
+              </p>
+              <p> Definición : {result.definition_es}</p>
+              <p> Ejemplos : {result.example_1}</p>
+              <p>{result.example_2}</p>
+            </div>
+          );
+        })}
     </div>
   );
 }
