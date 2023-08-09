@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 
 function Dictionary({ searchResult }) {
-  const [word, setWord] = useState("");
-  const [category, setCategory] = useState("");
-  const [definitionEs, setDefinitionEs] = useState("");
-  const [definitionEn, setDefinitionEn] = useState("");
-  const [example1, setExample1] = useState("");
-  const [example2, setExample2] = useState("");
-
   return (
     <div>
       {searchResult.length && (

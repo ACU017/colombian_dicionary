@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import "./App.css";
 import Dictionary from "./components/Dictionary";
+import Wordform from "./components/Wordform";
 
 function App() {
   const [searchInput, SetSearchInput] = useState("");
@@ -53,6 +54,7 @@ function App() {
         <div className="container" name="dictionary">
           {console.log(searchResult)}
           <Dictionary searchResult={searchResult} />
+          <Wordform />
         </div>
       </div>
     </>
