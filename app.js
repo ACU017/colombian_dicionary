@@ -4,8 +4,6 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-var indexRouter = require("./routes/index");
-// var usersRouter = require("./routes/users");
 var wordsRouter = require("./routes/words");
 // var signleWordRouter = require("./routes/single_word");
 
@@ -17,7 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/", indexRouter);
 app.use("/api/words", wordsRouter);
 // app.use("/:word", usersRouter);// after a : is a varible aka anything
 app.use(cors());
