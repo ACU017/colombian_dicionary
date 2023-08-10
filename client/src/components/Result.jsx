@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+
 import Typography from "@mui/material/Typography";
 
 export default function Result({ handleResult }) {
@@ -24,7 +24,7 @@ export default function Result({ handleResult }) {
             .sort((a, b) => a.word.localeCompare(b.word))
             .map((result) => {
               return (
-                <Card sx={{ minWidth: 275 }}>
+                <Card sx={{ minWidth: 275 }} key={result.id}>
                   <CardContent>
                     <Typography
                       sx={{

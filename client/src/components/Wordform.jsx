@@ -1,5 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+//Material UI
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 export default function Wordform() {
   const [word, setWord] = useState("");
@@ -8,13 +11,38 @@ export default function Wordform() {
   const [definitionEn, setDefinitionEn] = useState("");
   const [example1, setExample1] = useState("");
   const [example2, setExample2] = useState("");
+  const [request, SetRequest] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("I'm working");
-    setWord(e.target.value);
+    SetRequest((request.word = word));
+    SetRequest((request.category = category));
+    SetRequest((request.definition_es = definitionEs));
+    // request.definition_en = definitionEn;
+    // request.example_1 = example1;
+    // request.example2 = example2;
+    console.log(request);
   };
 
+  const postWord = async () => {
+    try {
+      const response = await fetch(`/api/words/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(request),
+      });
+
+      const json = await response.json(); // should I transform everything into a small caps ?
+      SetSearchResult(json);
+    } catch (error) {
+      console.log("errorz");
+    }
+  };
+
+  useEffect((handleSubmit) => {}, []);
   return (
     <div>
       <form onSubmit={handleSubmit}>
