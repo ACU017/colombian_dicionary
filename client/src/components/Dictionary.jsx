@@ -27,6 +27,7 @@ function Dictionary() {
       console.log("errorz");
     }
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

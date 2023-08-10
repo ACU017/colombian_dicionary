@@ -4,7 +4,6 @@ import "./App.css";
 import Dictionary from "./components/Dictionary";
 import Wordform from "./components/Wordform";
 import Allwords from "./components/Allwords";
-import Searchbar from "./components/Searchbar";
 
 function App() {
   return (
@@ -27,9 +26,11 @@ function App() {
       </div>
       <Routes>
         <Route path="/Dictionary" element={<Dictionary />} />
-        <Route path="/Searchbar/:word" element={<Searchbar />} />
         <Route path="/Wordform" element={<Wordform />} />
-        <Route path="/Allwords" element={<Allwords />} />
+        <Route
+          path="/Allwords"
+          element={<Allwords refresh={() => handleClick()} />}
+        />
       </Routes>
     </>
   );
