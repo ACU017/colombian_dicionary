@@ -1,5 +1,6 @@
 // Import all the component from REACT
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Searchbar() {
   const [searchResult, SetSearchResult] = useState([]);
@@ -13,6 +14,7 @@ export default function Searchbar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     searchWord(searchInput);
+    useNavigate(`/Searchbar/${searchInput}`);
   };
   const searchWord = async () => {
     try {

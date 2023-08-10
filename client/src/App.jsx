@@ -4,6 +4,7 @@ import "./App.css";
 import Dictionary from "./components/Dictionary";
 import Wordform from "./components/Wordform";
 import Allwords from "./components/Allwords";
+import Searchbar from "./components/Searchbar";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           </p>
           <p>
             <Link to="Dictionary">Dictionary</Link>
-          </p>{" "}
+          </p>
           <p>
             <Link to="Allwords">Glossary</Link>
           </p>
@@ -26,6 +27,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/Dictionary" element={<Dictionary />} />
+        <Route path="/Searchbar/:word" element={<Searchbar />} />
         <Route path="/Wordform" element={<Wordform />} />
         <Route path="/Allwords" element={<Allwords />} />
       </Routes>

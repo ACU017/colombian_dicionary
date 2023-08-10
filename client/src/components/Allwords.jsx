@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 export default function Allwords() {
   const [searchResult, SetSearchResult] = useState([]);
+  const navigate = useNavigate();
 
   const getAllwords = async () => {
     try {
@@ -35,7 +36,7 @@ export default function Allwords() {
           return (
             <div key={result.id}>
               <h5>
-                <Link to={`/${result.word}`}>{result.word}</Link>
+                <Link to={""}>{result.word}</Link>
               </h5>
             </div>
           );
