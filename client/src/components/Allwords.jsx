@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 export default function Allwords() {
   const [searchResult, SetSearchResult] = useState([]);
@@ -25,6 +27,7 @@ export default function Allwords() {
   return (
     <div>
       <h3>Diccionario Colombiano</h3>
+
       {searchResult
         .slice()
         .sort((a, b) => a.word.localeCompare(b.word))
@@ -32,7 +35,7 @@ export default function Allwords() {
           return (
             <div key={result.id}>
               <h5>
-                <Link to={`/api/words/${result.word}`}>{result.word}</Link>
+                <Link to={`/${result.word}`}>{result.word}</Link>
               </h5>
             </div>
           );
