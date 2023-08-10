@@ -5,6 +5,7 @@ import Dictionary from "./components/Dictionary";
 import Wordform from "./components/Wordform";
 import Allwords from "./components/Allwords";
 import Postrequest from "./components/Postrequest";
+import Result from "./components/Result";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/Dictionary" element={<Dictionary />} />
         <Route path="/Wordform" element={<Wordform />} />
         <Route path="/Allwords" element={<Allwords />} />
+        <Route path="/search/:word" element={<Result />} />
         <Route path="/Postrequest" element={<Postrequest />} />
       </Routes>
     </>

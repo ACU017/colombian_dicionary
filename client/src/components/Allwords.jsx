@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Result from "./Result";
 //Imports from Material UI
 
 export default function Allwords() {
   const [glossary, SetGlossary] = useState([]);
   const [result, SetResult] = useState(false);
-  const [selectedWord, SetSelectedWord] = useState("");
   const [wordObject, setWordObject] = useState({});
+  const navigate = useNavigate();
 
   // Gets all the words from the DB to set glossary state
   const getAllwords = async () => {
@@ -22,17 +22,15 @@ export default function Allwords() {
       console.log("errorz");
     }
   };
-  //find the word from the data base .json result
-  const findWord = (word) => {
-    const wordy = glossary.filter((object) => object.word === word);
 
-    setWordObject(wordy);
-    console.log(result);
-  };
+  //find the word from the data base .json result
+  // const findWord = (word) => {
+  //   setWordObject(wordy);
+  // };
 
   const handleClick = (word) => {
-    SetSelectedWord(word);
-    findWord(word);
+    navigate(`/search/${word}`);
+    // findWord(word);
     SetResult(true);
   };
 

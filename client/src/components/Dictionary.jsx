@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Result from "./Result";
 
 function Dictionary() {
   const [searchInput, SetSearchInput] = useState("");
   const [searchResult, SetSearchResult] = useState([]);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -12,20 +14,8 @@ function Dictionary() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    searchWord(searchInput);
-  };
-
-  const searchWord = async () => {
-    try {
-      const response = await fetch(`/api/words/${searchInput}`, {
-        method: "GET",
-      });
-
-      const json = await response.json(); // should I transform everything into a small caps ?
-      SetSearchResult(json);
-    } catch (error) {
-      console.log("errorz");
-    }
+    // searchWord(searchInput);
+    navigate(`/search/${searchInput}`);
   };
 
   return (
@@ -39,7 +29,6 @@ function Dictionary() {
         />
         <button type="submit">Dele</button>
       </form>
-      <Result handleResult={searchResult} />
     </div>
   );
 }

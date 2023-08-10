@@ -1,12 +1,13 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
+// import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-
 import Typography from "@mui/material/Typography";
+import { useParams } from "react-router-dom";
 
-export default function Result({ handleResult }) {
+export default function Result() {
+  //material UI dependency
   const bull = (
     <Box
       component="span"
@@ -15,11 +16,31 @@ export default function Result({ handleResult }) {
       •
     </Box>
   );
+  const { word } = useParams();
+  const [lookWord, SetLookWord] = useState("");
+
+  useEffect(() => {
+    const searchWord = async () => {
+      try {
+        const response = await fetch(`/api/words/${word}`, {
+          method: "GET",
+        });
+
+        const json = await response.json(); // should I transform everything into a small caps ?
+        SetLookWord(json);
+        console.log(word);
+      } catch (error) {
+        console.log("errorz");
+      }
+    };
+    searchWord();
+  }, []);
+
   return (
     <div>
-      {handleResult.length === 0
+      {lookWord.length === 0
         ? ""
-        : handleResult
+        : lookWord
             .slice()
             .sort((a, b) => a.word.localeCompare(b.word))
             .map((result) => {
