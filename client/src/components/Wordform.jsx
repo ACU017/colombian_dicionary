@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function Wordform() {
-  // request to send to the backend app in order to POST a new word
+  // states to build the body to the backend app in order to POST a new word
   const [request, SetRequest] = useState({
     word: "",
     category: "",
@@ -23,11 +23,13 @@ export default function Wordform() {
     }));
   };
 
+  // this functions handles the submit button cf button
   const handleSubmit = (event) => {
     // here you perform the post
     postWord();
   };
 
+  // this function does the POST into the DB
   const postWord = async () => {
     try {
       const response = await fetch(`/api/words`, {
@@ -38,13 +40,13 @@ export default function Wordform() {
         body: JSON.stringify(request),
       });
 
-      // const json = await response.json(); // should I transform everything into a small caps ?
       getAllwords();
       console.log("I posted");
     } catch (error) {
       console.log("errorz");
     }
   };
+  // Gets all words to show them in postman aka All the database
   const getAllwords = async () => {
     try {
       const response = await fetch(`/api/words`, {
@@ -61,11 +63,13 @@ export default function Wordform() {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
+        {" "}
+        {/* here the button/enter handles the submit as does the fetch requuest */}
         <label>Qué palabra quieres definir ? </label>
         <input
           type="text"
-          name="word"
-          value={request.word}
+          name="word" //=> event.target.name
+          value={request.word} //=> event.target.value reactive date with the request State
           onChange={handleChange}
         />
         <label>Que categoria es ? </label> {/* dropdown menu*/}
@@ -81,7 +85,7 @@ export default function Wordform() {
           value={request.definition_es}
           onChange={handleChange}
         ></textarea>
-        <label>Ahora en inglés - sin esta no se gradúa mija: </label>
+        <label>Ahora en inglés - sin esta no se gradua mija: </label>
         <textarea
           name="definition_en"
           value={request.definition_en}

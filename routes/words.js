@@ -48,8 +48,8 @@ router.post("/", async function (req, res, next) {
 });
 
 /*PUT request => as of now has to have all the params as the DB only take null for example_2
-so to update any element you have to send the whole element with all the body key cf bellow 
-the idea would be to make this into a single SQL line 
+so to update any element you have to send the whole element with all the body key cf bellow
+the idea would be to make this into a single SQL line
 
 UPDATE words SET keyname= 'obj.value' WHERE id= obj.id ;
 */
@@ -66,6 +66,7 @@ router.put("/", async function (req, res, next) {
 
   try {
     await db(
+      // for reference here is the DB request in MySQL
       `UPDATE words SET word="${word}", category="${category}", definition_es="${definition_es}", definition_en="${definition_en}", example_1="${example_1}", example_2 ="${example_2}"  WHERE id=${id};`
     );
     getAllItems(req, res);
@@ -73,15 +74,29 @@ router.put("/", async function (req, res, next) {
     res.status(500).send({ error: error.message });
   }
 });
-/*
-router.put("/todos/:todo_id", async (req, res) => {
-  // URL params are available in req.params
-  const id = +req.params.todo_id;
+
+/*RED BUTTON delete from the database
+I really don't want to use this because I want to protect the database
+
+router.delete("/", async function (req, res, next) {
+  const {
+    id,
+    word,
+    category,
+    definition_es,
+    definition_en,
+    example_1,
+    example_2,
+  } = req.body;
+
   try {
-    await db(`UPDATE items SET complete = !complete WHERE id =${id};`);
+    await db(
+      // for reference here is the DB request in MySQL
+      `NOT DONE YET -- HERE IS TEH SQL COMMAND ;`
+    );
     getAllItems(req, res);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
+  } catch (error) {
+    res.status(500).send({ error: error.message });
   }
 });
 */

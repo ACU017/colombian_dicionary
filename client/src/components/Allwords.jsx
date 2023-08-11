@@ -17,20 +17,16 @@ export default function Allwords() {
       });
 
       const json = await response.json();
+      //puts the DB into a state
       SetGlossary(json);
     } catch (error) {
       console.log("errorz");
     }
   };
 
-  //find the word from the data base .json result
-  // const findWord = (word) => {
-  //   setWordObject(wordy);
-  // };
-
+  // the word here is {result.word} that is the word you click
   const handleClick = (word) => {
-    navigate(`/search/${word}`);
-    // findWord(word);
+    navigate(`/search/${word}`); // here is the link to Result page
     SetResult(true);
   };
 
@@ -38,16 +34,16 @@ export default function Allwords() {
     SetResult(false);
   };
 
-  //Charges the
+  //Charges the DB so it shows all the words
   useEffect((e) => {
     getAllwords();
-    SetResult(false);
+    SetResult(false); // result to false so the conditional rendering works
   }, []);
 
   return (
     <div>
       <h3 onClick={handleChange}>Diccionario Colombiano</h3>
-
+      {/* if result is true show Result , if not map trhough the DB and show the words */}
       {result === true ? (
         <Result handleResult={wordObject} />
       ) : (
