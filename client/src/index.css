@@ -13,7 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+.navbar {
+  padding: 30px;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,13 +26,19 @@ a:hover {
 }
 
 form {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  align-content: center;
+}
+
+.box {
+  justify-content: space-evenly;
+  align-items: stretch;
 }
 
 p {
   font-weight: bold;
-  font-size: large;
+  font-size: 35px;
 }
 body {
   margin: 0;
@@ -40,6 +48,11 @@ body {
   min-height: 100vh;
 }
 
+label {
+  font-size: large;
+  font-weight: bold;
+  padding: 5px;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

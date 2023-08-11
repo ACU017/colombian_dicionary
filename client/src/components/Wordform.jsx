@@ -5,29 +5,32 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function Wordform() {
-  const [word, setWord] = useState("");
-  const [category, setCategory] = useState("");
-  const [definitionEs, setDefinitionEs] = useState("");
-  const [definitionEn, setDefinitionEn] = useState("");
-  const [example1, setExample1] = useState("");
-  const [example2, setExample2] = useState("");
-  const [request, SetRequest] = useState({});
+  // request to send to the backend app in order to POST a new word
+  const [request, SetRequest] = useState({
+    word: "",
+    category: "",
+    definition_es: "",
+    definition_en: "",
+    example_1: "",
+    example_2: "",
+  });
+
+  //handles changes and updates the state with the prevSate + {keyname:inputvalue}
+  const handleChange = (event) => {
+    SetRequest((prevRequest) => ({
+      ...prevRequest,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("I'm working");
-    SetRequest((request.word = word));
-    SetRequest((request.category = category));
-    SetRequest((request.definition_es = definitionEs));
-    // request.definition_en = definitionEn;
-    // request.example_1 = example1;
-    // request.example2 = example2;
-    console.log(request);
+    // here you perform the post
+    postWord();
   };
 
   const postWord = async () => {
     try {
-      const response = await fetch(`/api/words/`, {
+      const response = await fetch(`/api/words`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,48 +38,66 @@ export default function Wordform() {
         body: JSON.stringify(request),
       });
 
-      const json = await response.json(); // should I transform everything into a small caps ?
-      SetSearchResult(json);
+      // const json = await response.json(); // should I transform everything into a small caps ?
+      getAllwords();
+      console.log("I posted");
+    } catch (error) {
+      console.log("errorz");
+    }
+  };
+  const getAllwords = async () => {
+    try {
+      const response = await fetch(`/api/words`, {
+        method: "GET",
+      });
+
+      const json = await response.json();
+      console.log(json);
     } catch (error) {
       console.log("errorz");
     }
   };
 
-  useEffect((handleSubmit) => {}, []);
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit}>
         <label>Qué palabra quieres definir ? </label>
         <input
           type="text"
-          value={word}
-          onChange={(e) => setWord(e.target.value)}
+          name="word"
+          value={request.word}
+          onChange={handleChange}
         />
         <label>Que categoria es ? </label> {/* dropdown menu*/}
         <input
           type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          name="category"
+          value={request.category}
+          onChange={handleChange}
         />
         <label>Porfavor define la palabra : </label>
         <textarea
-          value={definitionEs}
-          onChange={(e) => setDefinitionEs(e.target.value)}
+          name="definition_es"
+          value={request.definition_es}
+          onChange={handleChange}
         ></textarea>
-        <label>Ahora en inglés : </label>
+        <label>Ahora en inglés - sin esta no se gradúa mija: </label>
         <textarea
-          value={definitionEn}
-          onChange={(e) => setDefinitionEn(e.target.value)}
+          name="definition_en"
+          value={request.definition_en}
+          onChange={handleChange}
         ></textarea>
         <label>Aquí va un ejemplo : </label>
         <textarea
-          value={example1}
-          onChange={(e) => setExample1(e.target.value)}
+          name="example_1"
+          value={request.example_1}
+          onChange={handleChange}
         ></textarea>
         <label>Y si quiere otro sumercé : </label>
         <textarea
-          value={example2}
-          onChange={(e) => setExample2(e.target.value)}
+          name="example_2"
+          value={request.example_2}
+          onChange={handleChange}
         ></textarea>
         <button>Hagale!</button>
       </form>

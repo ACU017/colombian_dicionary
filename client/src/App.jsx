@@ -12,18 +12,13 @@ function App() {
     <>
       <div>
         <nav className="navbar">
-          <p>
-            <Link to="">Home</Link>
-          </p>
-          <p>
-            <Link to="Dictionary">Dictionary</Link>
-          </p>
-          <p>
-            <Link to="Allwords">Glossary</Link>
-          </p>
-          <p>
-            <Link to="Postrequest">Add your word</Link>
-          </p>
+          <Link to="">Home</Link>
+
+          <Link to="Dictionary">Dictionary</Link>
+
+          <Link to="Allwords">Glossary</Link>
+
+          <Link to="Postrequest">Add your word</Link>
         </nav>
         <h1>Colombian Dictionary</h1>
         <div></div>
@@ -59,12 +54,12 @@ Former app structure
 <button onClick={() => setCount((count) => count + 1)}>
 count is {count}
 </button>
-<p>
+
 Edit <code>src/App.jsx</code> and save to test HMR
-</p>
+
 </div>
 <p className="read-the-docs">
 Click on the Vite and React logos to learn more
-</p>
+
 </>
 */

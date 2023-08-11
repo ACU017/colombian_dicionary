@@ -30,13 +30,16 @@ router.get("/:word", function (req, res, next) {
     .catch((err) => res.status(500).send(err));
 });
 
+// ADMIN RIGHTS
+
+// To add = check if the word already exists
 router.post("/", async function (req, res, next) {
   const { word, category, definition_es, definition_en, example_1, example_2 } =
     req.body;
 
   try {
     await db(
-      `INSERT INTO words (word, category, definition_es, definition_en, example_1, example_2) VALUES ("${word}","${category}","${definition_es}","${definition_en}","${example_1}","${example_2}");`
+      `INSERT INTO words (word, category, definition_es, definition_en, example_1, example_2) VALUES (,,,,,);`
     );
     getAllItems(req, res);
   } catch (error) {
@@ -44,7 +47,32 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-// ADMIN RIGHTS
+/*PUT request => as of now has to have all the params as the DB only take null for example_2
+so to update any element you have to send the whole element with all the body key cf bellow 
+the idea would be to make this into a single SQL line 
+
+UPDATE words SET keyname= 'obj.value' WHERE id= obj.id ;
+*/
+router.put("/", async function (req, res, next) {
+  const {
+    id,
+    word,
+    category,
+    definition_es,
+    definition_en,
+    example_1,
+    example_2,
+  } = req.body;
+
+  try {
+    await db(
+      `UPDATE words SET word="${word}", category="${category}", definition_es="${definition_es}", definition_en="${definition_en}", example_1="${example_1}", example_2 ="${example_2}"  WHERE id=${id};`
+    );
+    getAllItems(req, res);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
 /*
 router.put("/todos/:todo_id", async (req, res) => {
   // URL params are available in req.params
