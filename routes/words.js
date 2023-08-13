@@ -45,7 +45,7 @@ router.post("/", async function (req, res, next) {
     //   res.send("Your word already exist"); // you don't need an else this line is returning
     // }
     await db(
-      `INSERT INTO words (word, category, definition_es, definition_en, example_1, example_2) VALUES (${word},${category},${definition_es},${definition_en},${example_1},${example_2});`
+      `INSERT INTO words (word, category, definition_es, definition_en, example_1, example_2) VALUES ("${word}","${category}","${definition_es}","${definition_en}","${example_1}","${example_2}");`
     );
     getAllItems(req, res);
   } catch (error) {
