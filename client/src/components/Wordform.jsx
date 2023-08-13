@@ -24,7 +24,7 @@ export default function Wordform() {
   };
 
   // this functions handles the submit button cf button
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
     // here you perform the post
     postWord();
   };
@@ -40,30 +40,29 @@ export default function Wordform() {
         body: JSON.stringify(request),
       });
 
-      getAllwords();
-      console.log("I posted");
+      // getAllwords();
+      // console.log("I posted");
     } catch (error) {
       console.log("errorz");
     }
   };
   // Gets all words to show them in postman aka All the database
-  const getAllwords = async () => {
-    try {
-      const response = await fetch(`/api/words`, {
-        method: "GET",
-      });
+  // const getAllwords = async () => {
+  //   try {
+  //     const response = await fetch(`/api/words`, {
+  //       method: "GET",
+  //     });
 
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.log("errorz");
-    }
-  };
+  //     const json = await response.json();
+  //     console.log(json);
+  //   } catch (error) {
+  //     console.log("errorz");
+  //   }
+  // };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        {" "}
         {/* here the button/enter handles the submit as does the fetch requuest */}
         <label>Qué palabra quieres definir ? </label>
         <input

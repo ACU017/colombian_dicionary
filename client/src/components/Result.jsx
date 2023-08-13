@@ -5,6 +5,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
+import Wordform from "./Wordform";
 
 export default function Result() {
   //material UI dependency
@@ -28,7 +29,6 @@ export default function Result() {
 
         const json = await response.json(); // should I transform everything into a small caps ?
         SetLookWord(json);
-        console.log(word);
       } catch (error) {
         console.log("errorz");
       }
@@ -45,7 +45,7 @@ export default function Result() {
             .sort((a, b) => a.word.localeCompare(b.word))
             .map((result) => {
               return (
-                <Card sx={{ minWidth: 275 }} key={result.id}>
+                <Card sx={{ minWidth: 15 }} key={result.id}>
                   <CardContent>
                     <Typography
                       sx={{
@@ -64,7 +64,6 @@ export default function Result() {
                     </Typography>
                     <Typography variant="body1">
                       Ejemplos : {result.example_1}
-                      {result.example_2}
                     </Typography>
                     <Typography variant="body1">{result.example_2}</Typography>
                   </CardContent>
@@ -74,6 +73,7 @@ export default function Result() {
                 </Card>
               );
             })}
+      {/* <Wordform /> // */}
     </div>
   );
 }
