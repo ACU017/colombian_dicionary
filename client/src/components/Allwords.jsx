@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Result from "./Result";
+
 //Imports from Material UI
 
 export default function Allwords() {

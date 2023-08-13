@@ -61,7 +61,7 @@ UPDATE words SET keyname= 'obj.value' WHERE id= obj.id ;
 */
 router.put("/", async function (req, res, next) {
   const {
-    id,
+    // id, We never really get the ID unless we are in the back end app
     word,
     category,
     definition_es,
@@ -73,7 +73,7 @@ router.put("/", async function (req, res, next) {
   try {
     await db(
       // for reference here is the DB request in MySQL
-      `UPDATE words SET word="${word}", category="${category}", definition_es="${definition_es}", definition_en="${definition_en}", example_1="${example_1}", example_2 ="${example_2}"  WHERE id=${id};`
+      `UPDATE words SET word="${word}", category="${category}", definition_es="${definition_es}", definition_en="${definition_en}", example_1="${example_1}", example_2 ="${example_2}"  WHERE word=${word};`
     );
     getAllItems(req, res);
   } catch (error) {
@@ -82,9 +82,9 @@ router.put("/", async function (req, res, next) {
 });
 
 /*RED BUTTON delete from the database
-I really don't want to use this because I want to protect the database
+ */
 
-router.delete("/", async function (req, res, next) {
+router.delete("/:word", async function (req, res, next) {
   const {
     id,
     word,
@@ -93,18 +93,17 @@ router.delete("/", async function (req, res, next) {
     definition_en,
     example_1,
     example_2,
-  } = req.body;
+  } = req.params;
 
   try {
     await db(
       // for reference here is the DB request in MySQL
-      `NOT DONE YET -- HERE IS TEH SQL COMMAND ;`
+      `DELETE FROM words WHERE word= "${word}";`
     );
     getAllItems(req, res);
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
 });
-*/
 
 module.exports = router;
