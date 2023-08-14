@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   box-sizing: content-box;
-}
+} */
 .navbar {
   padding: 10px;
 }
@@ -52,8 +52,8 @@ body {
   background-image: url("https://images.pexels.com/photos/2606532/pexels-photo-2606532.jpeg?cs=srgb&dl=pexels-tom-fisk-2606532.jpg&fm=jpg");
   height: auto;
   width: auto;
-  background-position: center; /* Center the image */
-  /* background-repeat: no-repeat; Do not repeat the image */
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -99,4 +99,9 @@ div {
 
 .card {
   background-color: rgba(228, 236, 234, 0.886);
+}
+
+p {
+  max-width: 200px;
+  align-items: center;
 }

@@ -6,12 +6,12 @@ export default function Postrequest() {
   const [pageAdd, SetPageAdd] = useState(true);
 
   const handleClick = () => {
+    // if page add is true show Wordform to ass a word
     if (pageAdd) {
       SetPageAdd(false);
-      console.log("set add");
+      // if page add is false show Deleteword to delete a word
     } else if (!pageAdd) {
       SetPageAdd(true);
-      console.log("set mod");
     }
   };
   return (

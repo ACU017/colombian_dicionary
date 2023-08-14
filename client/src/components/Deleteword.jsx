@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Deleteword() {
   const [input, SetInput] = useState("");
@@ -20,8 +21,10 @@ export default function Deleteword() {
           "Content-Type": "application/json",
         },
       });
-      console.log(word);
-    } catch (error) {}
+      alert(`You deleted ${word}`);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
   return (
     <div>

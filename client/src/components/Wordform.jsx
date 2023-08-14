@@ -1,10 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-//Material UI
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 
 export default function Wordform() {
+  const [notEmpty, SetNotEmpty] = useState(false);
   // states to build the body to the backend app in order to POST a new word
   const [request, SetRequest] = useState({
     word: "",
@@ -14,6 +12,18 @@ export default function Wordform() {
     example_1: "",
     example_2: "",
   });
+  // function to check if request is empyt
+
+  function isEmpty(object) {
+    for (const key in object) {
+      if (object.hasOwnProperty(key)) {
+        if (object[key]) SetNotEmpty(true);
+      } else {
+        SetNotEmpty(false);
+      }
+    }
+    return console.log(notEmpty);
+  }
 
   //handles changes and updates the state with the prevSate + {keyname:inputvalue}
   const handleChange = (event) => {
@@ -25,8 +35,14 @@ export default function Wordform() {
 
   // this functions handles the submit button cf button
   const handleSubmit = () => {
+    isEmpty(request);
+    if (!notEmpty) {
+      postWord();
+      alert("Yohoo you added a word");
+    } else {
+      alert("Pongase las pilas y ponga todas las palabras");
+    }
     // here you perform the post
-    postWord();
   };
 
   // this function does the POST into the DB
@@ -41,7 +57,6 @@ export default function Wordform() {
       });
 
       // getAllwords();
-      // console.log("I posted");
     } catch (error) {
       console.log("errorz");
     }

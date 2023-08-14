@@ -18,7 +18,6 @@ export default function Allwords() {
       const json = await response.json();
       //puts the DB into a state
       SetGlossary(json);
-      console.log(json);
     } catch (error) {
       console.log("errorz");
     }
@@ -30,9 +29,9 @@ export default function Allwords() {
     SetResult(true);
   };
 
-  const handleChange = () => {
-    SetResult(false);
-  };
+  // const handleChange = () => {
+  //   SetResult(false);
+  // };
 
   //Charges the DB so it shows all the words
   useEffect(() => {
@@ -42,7 +41,7 @@ export default function Allwords() {
 
   return (
     <div>
-      <h3 onClick={handleChange}>Diccionario Colombiano</h3>
+      <h3>Diccionario Colombiano</h3>
       {/* if result is true show Result , if not map trhough the DB and show the words */}
       {result === true ? (
         <Result handleResult={wordObject} />

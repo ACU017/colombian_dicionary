@@ -30,7 +30,7 @@ export default function Result() {
     <div>
       {lookWord.length === 0 ? (
         <div>
-          <h3 onClick={handleClick}>Paila mi perro</h3>
+          <h3 onClick={handleClick}>Paila mi perro - try another word</h3>
         </div>
       ) : (
         lookWord

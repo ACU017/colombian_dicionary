@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Result from "../components/Result";
 
 function Dictionary() {
   const [searchInput, SetSearchInput] = useState("");
@@ -14,8 +13,11 @@ function Dictionary() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    navigate(`/search/${searchInput}`);
+    if (searchInput === "") {
+      navigate(`/Dictionary`);
+    } else {
+      navigate(`/search/${searchInput}`);
+    }
   };
 
   return (

@@ -98,7 +98,7 @@ router.delete("/:word", async function (req, res, next) {
   try {
     await db(
       // for reference here is the DB request in MySQL
-      `DELETE FROM words WHERE word= "${word}";`
+      ` DELETE FROM words WHERE word LIKE '%${word}%'; `
     );
     getAllItems(req, res);
   } catch (error) {
