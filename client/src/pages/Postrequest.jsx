@@ -22,7 +22,7 @@ export default function Postrequest() {
           Add a word
         </button>
         <button onClick={pageAdd ? () => handleClick() : null}>
-          Modify word
+          Delete word
         </button>
       </div>
 
