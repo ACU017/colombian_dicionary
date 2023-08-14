@@ -9,7 +9,7 @@ export default function Home() {
         Here's a little dictionary to understand the Colombian way of speaking.
         You'll find words, definition, examples and even the category of each
         word. This site in written both in English and Spanish also known as
-        Spanglish. If you want to know more on why you can go to :{" "}
+        Spanglish. If you want to know more on why you can go to :
         <a href="https://en.wikipedia.org/wiki/Decolonization">
           Decolonization
         </a>
