@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Result from "../components/Result";
 
-//Imports from Material UI
-
 export default function Allwords() {
   const [glossary, SetGlossary] = useState([]);
   const [result, SetResult] = useState(false);
@@ -49,16 +47,23 @@ export default function Allwords() {
       {result === true ? (
         <Result handleResult={wordObject} />
       ) : (
-        glossary
-          .slice()
-          .sort((a, b) => a.word.localeCompare(b.word))
-          .map((result) => {
-            return (
-              <div key={result.id}>
-                <p onClick={() => handleClick(result.word)}>{result.word}</p>
-              </div>
-            );
-          })
+        <div>
+          {glossary
+            .slice()
+            .sort((a, b) => a.word.localeCompare(b.word))
+            .map((result) => {
+              return (
+                <ul className="list-group" key={result.id}>
+                  <li
+                    className="list-group-item fs-3 m-1"
+                    onClick={() => handleClick(result.word)}
+                  >
+                    {result.word}
+                  </li>
+                </ul>
+              );
+            })}
+        </div>
       )}
     </div>
   );

@@ -14,7 +14,7 @@
   -webkit-text-size-adjust: 100%;
 }
 .navbar {
-  padding: 30px;
+  padding: 10px;
 }
 a {
   font-weight: 500;
@@ -36,16 +36,24 @@ form {
   align-items: stretch;
 }
 
-p {
+label {
   font-weight: bold;
   font-size: 35px;
+  color: rgb(25, 26, 25);
 }
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url("https://images.pexels.com/photos/2606532/pexels-photo-2606532.jpeg?cs=srgb&dl=pexels-tom-fisk-2606532.jpg&fm=jpg");
+  height: auto;
+  width: auto;
+  background-position: center; /* Center the image */
+  /* background-repeat: no-repeat; Do not repeat the image */
+  background-size: cover;
 }
 
 label {
@@ -56,6 +64,7 @@ label {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 10px;
 }
 
 h3 {
@@ -85,4 +94,8 @@ button:focus-visible {
 
 div {
   margin-bottom: 10%;
+}
+
+.card {
+  background-color: rgba(228, 236, 234, 0.886);
 }

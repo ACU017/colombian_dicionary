@@ -1,10 +1,11 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 6rem;
+  padding: 2rem;
   text-align: center;
+  justify-content: center;
+  background-color: rgba(199, 235, 166, 0.51);
 }
-
 .card {
   padding: 2em;
 }

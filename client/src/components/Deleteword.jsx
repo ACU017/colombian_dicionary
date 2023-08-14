@@ -36,7 +36,10 @@ export default function Deleteword() {
           value={input}
           onChange={handleChange}
         ></input>
-        <button type="submit">Sin miedo</button>
+        <br></br>
+        <button type="submit" className="btn btn-outline-dark">
+          Sin miedo
+        </button>
       </form>
     </div>
   );

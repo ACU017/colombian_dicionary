@@ -1,22 +1,7 @@
 import { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
-import Wordform from "./Wordform";
 
 export default function Result() {
-  //material UI dependency
-  const bull = (
-    <Box
-      component="span"
-      sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-    >
-      •
-    </Box>
-  );
   const { word } = useParams();
   const [lookWord, SetLookWord] = useState("");
 
@@ -45,32 +30,21 @@ export default function Result() {
             .sort((a, b) => a.word.localeCompare(b.word))
             .map((result) => {
               return (
-                <Card sx={{ minWidth: 15 }} key={result.id}>
-                  <CardContent>
-                    <Typography
-                      sx={{
-                        fontSize: 25,
-                      }}
-                      variant="h5"
-                      component="div"
-                    >
-                      {result.word}
-                    </Typography>
-                    <Typography variant="body1" component="div">
-                      Categoría: <i>{result.category}</i>
-                    </Typography>
-                    <Typography variant="body1" component="div">
-                      Definición : {result.definition_es}
-                    </Typography>
-                    <Typography variant="body1">
-                      Ejemplos : {result.example_1}
-                    </Typography>
-                    <Typography variant="body1">{result.example_2}</Typography>
-                  </CardContent>
-                  {/* <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions> */}
-                </Card>
+                <div className="d-flex  justify-content-center" key={result.id}>
+                  <div className="card" style={{ width: "18rem" }}>
+                    <div className="card-body">
+                      <h4 className="card-title">{result.word}</h4>
+                      <h6 className="card-subtitle mb-2 text-body-secondary">
+                        {result.category}
+                      </h6>
+                      <h5>Definición:</h5>
+                      <p className="card-text">{result.definition_es}</p>
+                      <h5 className="card-text">Ejemplos : </h5>
+                      <p>{result.example_1}</p>
+                      <p>{result.example_2}</p>
+                    </div>
+                  </div>
+                </div>
               );
             })}
       {/* <Wordform /> // */}

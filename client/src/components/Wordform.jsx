@@ -102,7 +102,8 @@ export default function Wordform() {
           value={request.example_2}
           onChange={handleChange}
         ></textarea>
-        <button>Hagale!</button>
+        <br></br>
+        <button className="btn btn-outline-dark">Hagale!</button>
       </form>
     </div>
   );

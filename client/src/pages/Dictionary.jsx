@@ -4,7 +4,7 @@ import Result from "../components/Result";
 
 function Dictionary() {
   const [searchInput, SetSearchInput] = useState("");
-  const [searchResult, SetSearchResult] = useState([]);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -14,7 +14,7 @@ function Dictionary() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // searchWord(searchInput);
+
     navigate(`/search/${searchInput}`);
   };
 
@@ -27,7 +27,10 @@ function Dictionary() {
           onChange={handleChange}
           value={searchInput}
         />
-        <button type="submit">Dele</button>
+        <br></br>
+        <button type="submit" className="btn btn-outline-dark ">
+          Dele
+        </button>
       </form>
     </div>
   );
