@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Result from "./Result";
+import Result from "../components/Result";
 
 //Imports from Material UI
 
@@ -20,6 +20,7 @@ export default function Allwords() {
       const json = await response.json();
       //puts the DB into a state
       SetGlossary(json);
+      console.log(json);
     } catch (error) {
       console.log("errorz");
     }
@@ -36,7 +37,7 @@ export default function Allwords() {
   };
 
   //Charges the DB so it shows all the words
-  useEffect((e) => {
+  useEffect(() => {
     getAllwords();
     SetResult(false); // result to false so the conditional rendering works
   }, []);

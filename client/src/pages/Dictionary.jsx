@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Result from "./Result";
+import Result from "../components/Result";
 
 function Dictionary() {
   const [searchInput, SetSearchInput] = useState("");

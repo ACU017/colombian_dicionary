@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import Dictionary from "./components/Dictionary";
+import Dictionary from "./pages/Dictionary";
 import Wordform from "./components/Wordform";
-import Allwords from "./components/Allwords";
-import Postrequest from "./components/Postrequest";
+import Allwords from "./pages/Allwords";
+import Postrequest from "./pages/Postrequest";
 import Result from "./components/Result";
 
 function App() {

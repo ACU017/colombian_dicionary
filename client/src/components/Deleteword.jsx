@@ -8,36 +8,27 @@ export default function Deleteword() {
     SetInput(e.target.value);
   };
 
-  const handleSubmit = async () => {
-    const { word } = req.body;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const word = input;
+    console.log(word);
 
     try {
-      const request = await fetch(`/api/words`, {
+      const request = await fetch(`/api/words/${word}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(request),
       });
+      console.log(word);
     } catch (error) {}
-
-    /*
-        
-         try {
-      const response = await fetch(`/api/words`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(request),
-      });*/
   };
   return (
     <div>
       <div>
         <h3>Which word do you want to delete? </h3>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label></label>
         <input
           name="word-to-delete"
@@ -45,7 +36,7 @@ export default function Deleteword() {
           value={input}
           onChange={handleChange}
         ></input>
-        <button>Sin miedo</button>
+        <button type="submit">Sin miedo</button>
       </form>
     </div>
   );
