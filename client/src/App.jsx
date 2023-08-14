@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Dictionary from "./pages/Dictionary";
@@ -6,13 +5,14 @@ import Wordform from "./components/Wordform";
 import Allwords from "./pages/Allwords";
 import Postrequest from "./pages/Postrequest";
 import Result from "./components/Result";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
       <div>
         <nav className="navbar">
-          <Link to="">Home</Link>
+          <Link to="/Home">Home</Link>
 
           <Link to="Dictionary">Dictionary</Link>
 
@@ -30,6 +30,7 @@ function App() {
         <Route path="/Allwords" element={<Allwords />} />
         <Route path="/search/:word" element={<Result />} />
         <Route path="/Postrequest" element={<Postrequest />} />
+        <Route path="/Home" element={<Home />} />
       </Routes>
     </>
   );

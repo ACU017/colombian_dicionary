@@ -12,6 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  box-sizing: content-box;
 }
 .navbar {
   padding: 10px;
@@ -31,10 +32,10 @@ form {
   text-align: center;
 }
 
-.box {
+/* .box {
   justify-content: space-evenly;
   align-items: stretch;
-}
+} */
 
 label {
   font-weight: bold;
