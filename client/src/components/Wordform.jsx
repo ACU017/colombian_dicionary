@@ -35,9 +35,9 @@ export default function Wordform() {
 
   // this functions handles the submit button cf button
   const handleSubmit = () => {
-    isEmpty(request);
-    console.log(notEmpty);
-    if (notEmpty) {
+    console.log(isEmpty(request));
+
+    if (!notEmpty) {
       postWord();
       alert("Yohoo you added a word");
     } else {

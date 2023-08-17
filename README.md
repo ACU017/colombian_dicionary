@@ -11,7 +11,27 @@ This is my first full stack app built using React, Node/Express, Vite and MySQL.
 
 # Set - up
 
-You'll have to clone the repository.
+You'll have to clone the repository, as a suggestion to avoid problems use the HTTPS.
+
+### Database Schema & style guide
+
+Your table named words has the following information for each word :
+
+id : automatically generated from MySQL (cf init_db.sql)
+word : the actual word.
+category : Always in small caps describing in one word what does it do e.g. "verb".
+definition_es : the definition of the word in Spanish.
+definition_en : the definition of the word in English to avoid the faulty autotranslations.
+
+example_1 : an example of use of thw word usually a phrase.
+
+example_2 : This is the only null value in the table so you can ignore it.
+
+### Dependencies
+
+Run `npm install` in the project folder to install dependencies related to Express (the server).
+
+`cd client` and run `npm install` install dependencies related to React (the client).
 
 ### Database Prep
 
@@ -26,11 +46,10 @@ DB_PASS=YOUR_PASSWORD
 
 You have a Colombian dictionary database sql with the prompts to create a DB with 30 colombian words. Each has a word, category, definition_es, definition_en and 2 examples.The definition_en is not nullable however if you set it to null you can then use another API to autotranslate it.
 
-### Dependencies
-
-Run `npm install` in the project folder to install dependencies related to Express (the server).
-
-`cd client` and run `npm install` install dependencies related to React (the client).
+- Type mysql -u root -p to access the MySQL CLI using your password.
+- In the MySQL CLI, type create database fromageria; to create a database in MySQL.
+- Run the following in the MySQL CLI: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YOUR_PASSWORD'; (replace YOUR_PASSWORD with your actual password)
+- Run npm run migrate in your TERMINAL, in the project folder to create the tables of te project.
 
 ### Run Your Development Servers
 
