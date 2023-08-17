@@ -3,20 +3,22 @@
 --
 
 SET foreign_key_checks = 0;
-DROP TABLE if exists students;
+DROP TABLE if exists words;
 SET foreign_key_checks = 1;
 
 --
 -- Create Tables
 --
 
-CREATE TABLE students(
-    id INT NOT NULL AUTO_INCREMENT, 
-    firstname VARCHAR(40) not null, 
-    lastname VARCHAR(40) not null, 
-    PRIMARY KEY (id)
-    );
-
+CREATE TABLE `words`(
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `word` VARCHAR(255) NOT NULL,
+    `category` VARCHAR(255) NOT NULL,
+    `definition_es` LONGTEXT NOT NULL,
+    `definition_en` LONGTEXT NOT NULL, -- this could be NULL if you want to auto translate it 
+    `example_1` LONGTEXT NOT NULL,
+    `example_2` LONGTEXT NULL
+);
 
 INSERT INTO tableName (word, category, definition_es, definition_en, example_1, example_2) VALUES ('Abrirse', 'verb', 'Irse del lugar donde se está.', 'To leave the place you are.', 'Abrase del parche perro.', 'Me abro como la yuca.');
 INSERT INTO tableName (word, category, definition_es, definition_en, example_1, example_2) VALUES ('Bacano', 'adjective', 'Algo bueno o positivo.', 'Something cool.', 'Que parche tan bacano!', '');

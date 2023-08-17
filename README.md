@@ -1,8 +1,13 @@
 # Colombian Dictionary App
 
+If you have any colombian person next to you, you can tell they speak in a very specific way. So much so there have been many attempts to capture the nuances of our Spanish.
+
+The idea was born as there is no ressources where you could browse the colombian specific words, you can find a myriad of website listing them but you would need to find a specific word using other methods. Further more, they are considered slang there's a lack of propper explanation or even an attempt to define them. I wanted to elevate these words and give them a place among the other dictionaries there are.
+
+This is an MVP with the idea of continue growing with features like including more words
 In this repository you will find the essentials to create a Colombian dictionary app.
 
-We will be using Read, Node/Express and MySQL.
+This is my first full stack app built using React, Node/Express, Vite and MySQL.
 
 # Set - up
 
